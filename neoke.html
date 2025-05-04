@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neoke - Connecting your personal info with AR</title>
+    <link href="https://cdn.prod.website-files.com/67250045a34b9360992cb365/css/webflow.2122697c.08b952491de1becb.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="neoke.css" />
+</head>
+<body class="body">
+    <div class="page-wrapper">
+        <div class="global-styles w-embed">
+            <style>
+                /* Ensure all elements inherit the color from its parent */
+                body * {
+                    color: inherit;
+                }
+
+                a,
+                .w-input,
+                .w-select,
+                .w-tab-link,
+                .w-nav-link,
+                .w-slider-arrow-left,
+                .w-slider-arrow-right,
+                .w-dropdown-btn,
+                .w-dropdown-toggle,
+                .w-dropdown-link {
+                    color: inherit;
+                    text-decoration: inherit;
+                    font-size: inherit;
+                }
+
+                /* Focus state style for keyboard navigation */
+                *[tabindex]:focus-visible,
+                input[type="file"]:focus-visible {
+                    outline: 0.125rem solid #4d65ff;
+                    outline-offset: 0.125rem;
+                }
+
+                /* Rich text element margins */
+                .w-richtext > :not(div):first-child, 
+                .w-richtext > div:first-child > :first-child {
+                    margin-top: 0 !important;
+                }
+
+                .w-richtext>:last-child, 
+                .w-richtext ol li:last-child, 
+                .w-richtext ul li:last-child {
+                    margin-bottom: 0 !important;
+                }
+
+                /* Pointer events */
+                .pointer-events-off {
+                    pointer-events: none;
+                }
+
+                .pointer-events-on {
+                    pointer-events: auto;
+                }
+
+                /* Square div */
+                .div-square::after {
+                    content: "";
+                    display: block;
+                    padding-bottom: 100%;
+                }
+
+                /* Container alignment */
+                .container-medium,
+                .container-small, 
+                .container-large {
+                    margin-right: auto !important;
+                    margin-left: auto !important;
+                }
+
+                /* Text truncation */
+                .text-style-3lines {
+                    display: -webkit-box;
+                    overflow: hidden;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                }
+
+                .text-style-2lines {
+                    display: -webkit-box;
+                    overflow: hidden;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                }
+
+                /* Display utilities */
+                .display-inlineflex {
+                    display: inline-flex;
+                }
+
+                /* Hide utilities */
+                .hide {
+                    display: none !important;
+                }
+
+                @media screen and (max-width: 991px) {
+                    .hide, .hide-tablet {
+                        display: none !important;
+                    }
+                }
+
+                @media screen and (max-width: 767px) {
+                    .hide-mobile-landscape {
+                        display: none !important;
+                    }
+                }
+
+                @media screen and (max-width: 479px) {
+                    .hide-mobile {
+                        display: none !important;
+                    }
+                }
+
+                /* Spacing utilities */
+                .margin-0 { margin: 0rem !important; }
+                .padding-0 { padding: 0rem !important; }
+                .spacing-clean {
+                    padding: 0rem !important;
+                    margin: 0rem !important;
+                }
+
+                /* Scrollbar */
+                .no-scrollbar {
+                    -ms-overflow-style: none;
+                    overflow: -moz-scrollbars-none;
+                }
+
+                .no-scrollbar::-webkit-scrollbar {
+                    display: none;
+                }
+            </style>
+        </div>
+        <main class="main-wrapper">
+            <div data-collapse="medium" data-animation="default" data-duration="400" data-w-id="d3674ecd-754d-640a-970b-9ae2ec27a084" data-easing="ease" data-easing2="ease" role="banner" class="navbar1_component w-nav">
+                <div class="navbar1_container">
+                    <a href="/" class="navbar1_logo-link w-nav-brand" aria-label="home">
+                        <img src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/672b5ab4d0c62e34c0ad09a0_Logo.svg" loading="lazy" alt="" class="image-2">
+                    </a>
+                    <nav role="navigation" class="navbar1_menu w-nav-menu">
+                        <div class="div-block-15">
+                            <a href="#" class="navbar1_link w-nav-link">Work</a>
+                            <a href="/about" class="navbar1_link w-nav-link">About</a>
+                        </div>
+                        <a href="https://calendly.com/nicobalbontin" class="button-2_small w-inline-block">
+                            <div data-w-id="ebad83a3-f7b1-37b5-fd3d-b2e3bd82916b" class="button-up-_small">
+                                <div class="button-text_small text-color-black">Schedule a call</div>
+                            </div>
+                            <div class="button-down_small">
+                                <div class="button-text no-opacity">Let's talk now!</div>
+                            </div>
+                        </a>
+                    </nav>
+                    <div class="navbar1_menu-button w-nav-button" aria-label="menu" role="button" tabindex="0" aria-controls="w-nav-overlay-0" aria-haspopup="menu" aria-expanded="false">
+                        <div class="menu-icon1">
+                            <div class="menu-icon1_line-top"></div>
+                            <div class="menu-icon1_line-middle">
+                                <div class="menu-icon_line-middle-inner"></div>
+                            </div>
+                            <div class="menu-icon1_line-bottom"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-nav-overlay" data-wf-ignore="" id="w-nav-overlay-0"></div>
+            </div>
+
+            <section class="section_intro padding-40">
+                <div class="padding-global--9">
+                    <div class="container-large">
+                        <div class="padding-section-medium">
+                            <div class="align-left padding-bottom-2rem">
+                                <a href="/" class="w-inline-block">
+                                    <img src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/6728eaa5100b5c010a5b417e_Cross%20page.svg" loading="lazy" alt="">
+                                </a>
+                            </div>
+                            <div class="w-layout-grid about1-growth_component">
+                                <div class="about1-growth_content">
+                                    <div class="margin-bottom padding-tittle">
+                                        <h2><strong>Connecting your</strong>‍<strong>personal info with AR</strong></h2>
+                                    </div>
+                                </div>
+                                <div id="w-node-_46c88618-c556-8d08-657b-f4428f8e0f40-15dfae88" class="description-list1_component"></div>
+                                <div id="w-node-_46c88618-c556-8d08-657b-f4428f8e0f41-15dfae88" class="description-list1_component">
+                                    <div class="margin-bottom margin-medium">
+                                        <p class="text-size-medium">Neoke empowers travelers with a digital wallet for identification processes. With Neoke, users can conveniently manage their digital information, providing easy access to hotels, airports, and security checkpoints during their trip.</p>
+                                    </div>
+                                    <div class="margin-bottom margin-medium">
+                                        <p class="text-size-medium">Neoke presented the goal of designing and integrating an autofill feature for paper forms, that would allow their users to navigate check-in processes also outside of the platform ecosystem. The main purpose is streamlining the process for Neoke users, but it is also a good way of incrementing the USP for the App and its appeal for a broader audience.</p>
+                                    </div>
+                                </div>
+                                <div id="w-node-_46c88618-c556-8d08-657b-f4428f8e0f48-15dfae88" class="description-list1_component">
+                                    <div class="description-list1_content">
+                                        <div id="w-node-_46c88618-c556-8d08-657b-f4428f8e0f4a-15dfae88" class="description-list1_list">
+                                            <div class="description-list1_item">
+                                                <div class="margin-bottom margin-xxsmall">
+                                                    <div class="text-weight-semibold">MY ROLE</div>
+                                                </div>
+                                                <div>UX/UI Design</div>
+                                                <div>Prototype</div>
+                                                <div>Research</div>
+                                            </div>
+                                        </div>
+                                        <div id="w-node-_46c88618-c556-8d08-657b-f4428f8e0f55-15dfae88" class="description-list1_list">
+                                            <div id="w-node-_46c88618-c556-8d08-657b-f4428f8e0f56-15dfae88" class="description-list1_item">
+                                                <div class="margin-bottom margin-xxsmall">
+                                                    <div class="text-weight-semibold">CLIENT</div>
+                                                </div>
+                                                <div class="max-width-large">
+                                                    <div>Neoke</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="video-prod">
+                <div class="w-layout-blockcontainer full-screen-container w-container">
+                    <article data-poster-url="https://cdn.prod.website-files.com/6491a66556072f653d0181b0/65645ef0b0669b030c7de147_Neoke1_for_webflow-poster-00001.jpg" data-video-urls="https://cdn.prod.website-files.com/6491a66556072f653d0181b0/65645ef0b0669b030c7de147_Neoke1_for_webflow-transcode.mp4,https://cdn.prod.website-files.com/6491a66556072f653d0181b0/65645ef0b0669b030c7de147_Neoke1_for_webflow-transcode.webm" data-autoplay="true" data-loop="true" data-wf-ignore="true" class="background-video-6 w-background-video w-background-video-atom">
+                        <video id="3de44ac7-9f1e-661f-dee9-13e4c2708660-video" autoplay="" loop="" style="background-image:url('https://cdn.prod.website-files.com/6491a66556072f653d0181b0/65645ef0b0669b030c7de147_Neoke1_for_webflow-poster-00001.jpg')" muted="" playsinline="" data-wf-ignore="true" data-object-fit="cover">
+                            <source src="https://cdn.prod.website-files.com/6491a66556072f653d0181b0/65645ef0b0669b030c7de147_Neoke1_for_webflow-transcode.mp4" data-wf-ignore="true">
+                            <source src="https://cdn.prod.website-files.com/6491a66556072f653d0181b0/65645ef0b0669b030c7de147_Neoke1_for_webflow-transcode.webm" data-wf-ignore="true">
+                        </video>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section_research">
+                <div class="padding-global--9">
+                    <div class="container-large">
+                        <div class="padding-section-text">
+                            <div class="margin-bottom margin-xxlarge">
+                                <div class="div-block-16">
+                                    <div class="w-layout-grid about4-growth_component">
+                                        <div class="about4-growth_content-left">
+                                            <h3>Research</h3>
+                                        </div>
+                                        <div class="about4-growth_content-right">
+                                            <div class="margin-bottom margin-medium">
+                                                <p class="text-size-medium">We conducted a survey to learn about user travel preferences and behaviors. The results surprised us, as check-in and form filling in hotels particularly weren't pain points. Instead, booking flights, hotels and filling forms in other languages were the main concerns.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="w-layout-grid about3-growth_component">
+                                        <div class="about4-growth_text-wrapper">
+                                            <div>
+                                                <div class="margin-bottom margin-xxsmall">
+                                                    <div id="count-subs1" class="heading-style-h1">48%</div>
+                                                </div>
+                                                <div class="text-size-medium">Travels 3+ per year</div>
+                                            </div>
+                                        </div>
+                                        <div class="about4-growth_text-wrapper">
+                                            <div>
+                                                <div class="margin-bottom margin-xxsmall">
+                                                    <div id="count-subs2" class="heading-style-h1">94%</div>
+                                                </div>
+                                                <div class="text-size-medium">Stays in hotels</div>
+                                            </div>
+                                        </div>
+                                        <div class="about4-growth_text-wrapper">
+                                            <div>
+                                                <div class="margin-bottom margin-xxsmall">
+                                                    <div class="heading-style-h1"><strong>0%</strong></div>
+                                                </div>
+                                                <div class="text-size-medium">Check-in challenging</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="w-layout-grid gallery2_grid-list-copy">
+                                        <div class="w-layout-grid gallery3_row padding-top">
+                                            <a href="#" id="w-node-_8afa2f80-53f8-a61c-881c-9fa2d08df92e-15dfae88" class="gallery2_lightbox-link w-inline-block w-lightbox" aria-label="open lightbox" aria-haspopup="dialog">
+                                                <div class="user-comment">
+                                                    <img loading="lazy" src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/672ccf8859fb19b67879d254_Image%20Wrapper.png" alt="">
+                                                    <p class="text-size-medium"><strong>"</strong>I use <strong>Google Maps</strong> when I want to go from point A to point B. <strong>Sometimes I use it because I don't want to think"</strong></p>
+                                                </div>
+                                            </a>
+                                            <a href="#" id="w-node-_8afa2f80-53f8-a61c-881c-9fa2d08df93a-15dfae88" class="gallery2_lightbox-link w-inline-block w-lightbox" aria-label="open lightbox" aria-haspopup="dialog">
+                                                <div class="user-comment">
+                                                    <img loading="lazy" src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/672ccf89e3991f7df5776912_Rectangle%20384.png" alt="">
+                                                    <p class="text-size-medium"><strong>"Wasting time is the main challenge </strong>to fill out the form. I want to know what I have to fill in advance, not on the spot"</p>
+                                                </div>
+                                            </a>
+                                            <a href="#" id="w-node-_8afa2f80-53f8-a61c-881c-9fa2d08df941-15dfae88" class="gallery2_lightbox-link w-inline-block w-lightbox" aria-label="open lightbox" aria-haspopup="dialog">
+                                                <div class="user-comment">
+                                                    <img loading="lazy" src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/672ccf89cdb826e772bd2583_Rectangle%20383.png" alt="">
+                                                    <p class="text-size-medium">"I booked online through a platform, but I had <strong>to fill paper forms at the counter. It took me at least 40 minutes"</strong></p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="design-systems">
+                <div class="padding-global--9">
+                    <div class="container-large">
+                        <div class="design-system-container-total">
+                            <div class="w-layout-grid about4-growth_component padding-bottom">
+                                <div class="about4-growth_content-left">
+                                    <h3 class="text-color-white">Design System</h3>
+                                </div>
+                                <div class="about4-growth_content-right">
+                                    <div class="margin-bottom margin-medium">
+                                        <p class="text-size-medium text-color-white">Following the IOS Design guidelines, we developed fundamental components and their variations in Figma to construct the user interface. This entailed incorporating over 40 icons and creating more than 70 new components while ensuring accessibility and compliance with WCAG standards</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="design-system-container">
+                                <img width="542" height="254" alt="" src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/672cddcf5ce5560a3b673a1b_Group-39603.png" loading="lazy" srcset="https://cdn.prod.website-files.com/67250045a34b9360992cb365/672cddcf5ce5560a3b673a1b_Group-39603-p-500.png 500w, https://cdn.prod.website-files.com/67250045a34b9360992cb365/672cddcf5ce5560a3b673a1b_Group-39603.png 542w" sizes="(max-width: 479px) 90vw, (max-width: 660px) 82vw, (max-width: 991px) 542px, 40vw" class="group-39607">
+                                <img width="542" height="254" alt="" src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/672cddd05ce5560a3b673a23_Group-39603.png" loading="lazy" srcset="https://cdn.prod.website-files.com/67250045a34b9360992cb365/672cddd05ce5560a3b673a23_Group-39603-p-500.png 500w, https://cdn.prod.website-files.com/67250045a34b9360992cb365/672cddd05ce5560a3b673a23_Group-39603.png 542w" sizes="(max-width: 479px) 90vw, (max-width: 660px) 82vw, (max-width: 991px) 542px, 40vw" class="group-39607">
+                            </div>
+                            <div class="design-system-container-bottom">
+                                <img width="1106" height="525" alt="" src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/672cddd05ce5560a3b673a2f_Frame-39701-1.png" loading="lazy" srcset="https://cdn.prod.website-files.com/67250045a34b9360992cb365/672cddd05ce5560a3b673a2f_Frame-39701-1-p-500.png 500w, https://cdn.prod.website-files.com/67250045a34b9360992cb365/672cddd05ce5560a3b673a2f_Frame-39701-1-p-800.png 800w, https://cdn.prod.website-files.com/67250045a34b9360992cb365/672cddd05ce5560a3b673a2f_Frame-39701-1-p-1080.png 1080w, https://cdn.prod.website-files.com/67250045a34b9360992cb365/672cddd05ce5560a3b673a2f_Frame-39701-1.png 1106w" sizes="(max-width: 1106px) 100vw, 1106px" class="design-system-neoke-photo3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-black">
+                <div class="padding-global--9">
+                    <div class="container-large">
+                        <div class="design-system-container-total">
+                            <div class="w-layout-grid about4-growth_component padding-bottom">
+                                <div class="about4-growth_content-left">
+                                    <h3 class="text-color-white">High Fidelity</h3>
+                                </div>
+                                <div class="about4-growth_content-right">
+                                    <div class="margin-bottom margin-medium">
+                                        <p class="text-size-medium text-color-white">We prototyped our solution in Figma, incorporating insights from mid-fidelity testing and Style tile guidelines. Our prototype focuses on key app features: Check-in process, ARV live navigation and wallet navigation.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pricing-v3-copy">
+                                <div class="container-128">
+                                    <div class="columns-24">
+                                        <img loading="lazy" src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/672ce64b2ff71e18264aa3b8_Navigation.gif" alt="" class="neoke_gif01">
+                                        <img loading="lazy" src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/672ce67713f5441db29fc35f_Alergy.gif" alt="" class="neoke_gif_02">
+                                        <img loading="lazy" src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/672ce67713f5441db29fc37f_navigation_info2.gif" alt="" class="neoke_gif03">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results">
+                <div class="kontainer-114">
+                    <div class="body-25 inverse">
+                        <div class="left-column-6">
+                            <div class="feature-10">
+                                <div class="frame-39851">
+                                    <div class="frame-39851 _0-5em">
+                                        <div class="text-weight-semibold text-size-small">YEAR</div>
+                                        <div class="text-paragraph grey">2023</div>
+                                    </div>
+                                    <div class="frame-39851">
+                                        <div class="text-weight-semibold text-size-small">TEAM</div>
+                                        <div class="frame-39859">
+                                            <div class="text-paragraph-tiny grey">Thanos S - Lead Designer<br>Sebastian Honores - CPO<br>Serena Rizzo - PM<br></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="frame-39854">
+                            <div class="frame-39855">
+                                <div class="frame-39856">
+                                    <div class="frame-39857">
+                                        <div class="text-size-small text-weight-semibold">Speed filling out paper form</div>
+                                        <div id="count-subs3" class="text-191">4x faster</div>
+                                    </div>
+                                    <div class="text-size-medium">Users can speed up their paperwork and help others do the same.</div>
+                                </div>
+                                <div class="frame-39856">
+                                    <div class="frame-39857">
+                                        <div class="text-size-small text-weight-bold">Likely to use it for traveling</div>
+                                        <div id="count-subs4" class="text-191">90%</div>
+                                    </div>
+                                    <div class="text-size-medium">Users indicated their intention to use Neoke for international travel.</div>
+                                </div>
+                            </div>
+                            <div class="frame-39855">
+                                <div class="frame-39856">
+                                    <div class="frame-39857">
+                                        <div class="text-size-small text-weight-xbold">Likely to use it for other purposes</div>
+                                        <div id="count-subs5" class="text-191">85%</div>
+                                    </div>
+                                    <div class="text-size-medium">Users wanted to use the app for more than just travel, including government-related tasks.</div>
+                                </div>
+                                <div class="frame-39856">
+                                    <div class="frame-39857">
+                                        <div class="text-size-small text-weight-bold">Recommend this app to others</div>
+                                        <div id="count-subs6" class="text-191">75%</div>
+                                    </div>
+                                    <div class="text-size-medium">Users indicated their intention to recommend this app to fellow travelers with similar needs.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="next-proyect-3">
+                <div class="container-126">
+                    <a href="/here-now" class="frame-39872-copy w-inline-block">
+                        <div class="next-section">
+                            <div data-w-id="f6a98974-2cff-22ee-1597-534060306e73" class="text-215">NEXT PROJECT</div>
+                            <img width="32" height="2" alt="" src="https://cdn.prod.website-files.com/6491a66556072f653d0181b0/655a285f7901275501720ee9_line-1.png" loading="lazy" data-w-id="f6a98974-2cff-22ee-1597-534060306e75" class="line-4">
+                        </div>
+                        <div class="frame-39873">
+                            <img width="361.390625" height="145" alt="" src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/672cf991fd730b46acca30c2_Vectors-Wrapper.svg" loading="lazy" class="vectors-wrapper-43">
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="section-ready-tor-wrok">
+                <div class="padding-global">
+                    <div class="container-small">
+                        <div class="padding-section-xlarge">
+                            <div class="text-align-center">
+                                <div class="cta_ready-to-work">
+                                    <div class="cta-tittle">
+                                        <h2 class="heading-3">Ready to rock?</h2>
+                                        <p class="text-size-medium text-color-white">I'm here to help. Let's explore how we can work together</p>
+                                    </div>
+                                    <div class="margin-top margin-medium">
+                                        <div class="button-group is-center">
+                                            <a href="https://calendly.com/nicobalbontin" class="button-2 w-inline-block">
+                                                <div class="button-up background-color-white border-black">
+                                                    <div class="button-text text-color-black">Schedule a call</div>
+                                                </div>
+                                                <div class="button-down">
+                                                    <div class="button-text no-opacity">Let's talk now!</div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer7_component-_black">
+                <div class="padding-global">
+                    <div class="container-large">
+                        <div class="padding-vertical padding-xxlarge">
+                            <div class="padding-bottom padding-xxlarge">
+                                <div class="footer7_top-wrapper-2 text-color-white">
+                                    <a href="#" id="w-node-feb2f17a-a220-bb33-f3c2-f3edf50c749f-f50c7499" class="footer7_logo-link w-nav-brand">
+                                        <img loading="lazy" src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/672b9a35a366c720aa8b91fb_Frame%201597880529.svg" alt="" class="footer7_logo">
+                                    </a>
+                                    <div class="w-layout-grid footer7_link-list">
+                                        <a href="/" class="footer7_link-2 text-color-white">Work</a>
+                                        <a href="/about" class="footer7_link-2 text-color-white">About</a>
+                                        <a href="#" class="footer7_link-2 text-color-white">Contact</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-divider-3"></div>
+                            <div class="padding-top padding-medium">
+                                <div class="footer7_bottom-wrapper">
+                                    <div class="div-block-14">
+                                        <div class="footer7_credit-text text-color-white">Made with</div>
+                                        <img src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/672b9ad38f179b663839e5e3_heart-fill.svg" loading="lazy" alt="" class="image-small-logo">
+                                        <div class="footer7_credit-text text-color-white">from amsterdam</div>
+                                    </div>
+                                    <div class="w-layout-grid footer7_legal-list">
+                                        <div class="linkedin-footer">
+                                            <a href="#" class="footer7_legal-link text-color-white">LinkedIn</a>
+                                            <img src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/672b9c480443e8ba94a430f4_linkedin-box-fill.svg" loading="lazy" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=67250045a34b9360992cb365" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/js/webflow.schunk.4a394eb5af8156f2.js" type="text/javascript"></script>
+    <script src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/js/webflow.schunk.220a469280b603f6.js" type="text/javascript"></script>
+    <script src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/js/webflow.schunk.ed0c20e773e9419c.js" type="text/javascript"></script>
+    <script src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/js/webflow.2122697c.08b952491de1becb.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.3.2/countUp.umd.min.js" integrity="sha512-Be9XaN4NvN8CVmbk4juf7JX2/87a7I37CX1WV37w+jyav4exBHDqHzmjs+Tbx7Dt2j9vpULDZNxcP0sZP03/WQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        const optionsSubs = {
+            enableScrollSpy: true,
+            startVal: 30,
+            duration: 3,
+            suffix: "%"
+        };
+
+        const numAnimSubs = new countUp.CountUp("count-subs1", 48, optionsSubs);
+
+        const optionsRevenue = {
+            enableScrollSpy: true,
+            startVal: 80,
+            duration: 4,
+            suffix: "%"
+        };
+        const numAnimRevenue = new countUp.CountUp("count-subs2",94,optionsRevenue);
+
+        const options3 = {
+            enableScrollSpy: true,
+            startVal: 0,
+            duration: 2,
+            suffix: "x faster"
+        };
+
+        const numAnim3 = new countUp.CountUp("count-subs3", 4, options3);
+
+        const options4 = {
+            enableScrollSpy: true,
+            startVal: 80,
+            duration: 3,
+            suffix: "%"
+        };
+
+        const numAnim4 = new countUp.CountUp("count-subs4", 90, options4);
+
+        const options5 = {
+            enableScrollSpy: true,
+            startVal: 70,
+            duration: 3,
+            suffix: "%"
+        };
+
+        const numAnim5 = new countUp.CountUp("count-subs5", 85, options5);
+
+        const options6 = {
+            enableScrollSpy: true,
+            startVal: 60,
+            duration: 3,
+            suffix: "%"
+        };
+
+        const numAnim6 = new countUp.CountUp("count-subs6", 75, options6);
+    </script>
+</body>
+</html> 

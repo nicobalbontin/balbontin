@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statie App - Nico Balbontin</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="nav-fixes.css">
+    <link rel="stylesheet" href="responsive-nav.css">
+    <link rel="stylesheet" href="projects.css">
+    <link rel="stylesheet" href="hover-effects.css">
+    <link rel="stylesheet" href="statie.css">
+    <link rel="statieapp" href="statieapp.css" />
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="global-styles w-embed">
+            <style>
+                /* Ensure all elements inherit the color from its parent */
+                body * {
+                    color: inherit;
+                }
+
+                a,
+                .w-input,
+                .w-select,
+                .w-tab-link,
+                .w-nav-link,
+                .w-slider-arrow-left,
+                .w-slider-arrow-right,
+                .w-dropdown-btn,
+                .w-dropdown-toggle,
+                .w-dropdown-link {
+                    color: inherit;
+                    text-decoration: inherit;
+                    font-size: inherit;
+                }
+
+                /* Focus state style for keyboard navigation */
+                *[tabindex]:focus-visible,
+                input[type="file"]:focus-visible {
+                    outline: 0.125rem solid #4d65ff;
+                    outline-offset: 0.125rem;
+                }
+
+                /* Rich text element margins */
+                .w-richtext > :not(div):first-child,
+                .w-richtext > div:first-child > :first-child {
+                    margin-top: 0 !important;
+                }
+
+                .w-richtext>:last-child,
+                .w-richtext ol li:last-child,
+                .w-richtext ul li:last-child {
+                    margin-bottom: 0 !important;
+                }
+
+                /* Pointer events */
+                .pointer-events-off {
+                    pointer-events: none;
+                }
+
+                .pointer-events-on {
+                    pointer-events: auto;
+                }
+
+                /* Square div */
+                .div-square::after {
+                    content: "";
+                    display: block;
+                    padding-bottom: 100%;
+                }
+
+                /* Container alignment */
+                .container-medium,
+                .container-small,
+                .container-large {
+                    margin-right: auto !important;
+                    margin-left: auto !important;
+                }
+
+                /* Text truncation */
+                .text-style-3lines {
+                    display: -webkit-box;
+                    overflow: hidden;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                }
+
+                .text-style-2lines {
+                    display: -webkit-box;
+                    overflow: hidden;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                }
+
+                /* Display utilities */
+                .display-inlineflex {
+                    display: inline-flex;
+                }
+
+                /* Hide utilities */
+                .hide {
+                    display: none !important;
+                }
+
+                @media screen and (max-width: 991px) {
+                    .hide,
+                    .hide-tablet {
+                        display: none !important;
+                    }
+                }
+
+                @media screen and (max-width: 767px) {
+                    .hide-mobile-landscape {
+                        display: none !important;
+                    }
+                }
+
+                @media screen and (max-width: 479px) {
+                    .hide-mobile {
+                        display: none !important;
+                    }
+                }
+
+                /* Spacing utilities */
+                .margin-0 {
+                    margin: 0rem !important;
+                }
+
+                .padding-0 {
+                    padding: 0rem !important;
+                }
+
+                .spacing-clean {
+                    padding: 0rem !important;
+                    margin: 0rem !important;
+                }
+
+                /* Directional margins and padding */
+                .margin-top {
+                    margin-right: 0rem !important;
+                    margin-bottom: 0rem !important;
+                    margin-left: 0rem !important;
+                }
+
+                .padding-top {
+                    padding-right: 0rem !important;
+                    padding-bottom: 0rem !important;
+                    padding-left: 0rem !important;
+                }
+
+                .margin-right {
+                    margin-top: 0rem !important;
+                    margin-bottom: 0rem !important;
+                    margin-left: 0rem !important;
+                }
+
+                .padding-right {
+                    padding-top: 0rem !important;
+                    padding-bottom: 0rem !important;
+                    padding-left: 0rem !important;
+                }
+
+                .margin-bottom {
+                    margin-top: 0rem !important;
+                    margin-right: 0rem !important;
+                    margin-left: 0rem !important;
+                }
+
+                .padding-bottom {
+                    padding-top: 0rem !important;
+                    padding-right: 0rem !important;
+                    padding-left: 0rem !important;
+                }
+
+                .margin-left {
+                    margin-top: 0rem !important;
+                    margin-right: 0rem !important;
+                    margin-bottom: 0rem !important;
+                }
+
+                .padding-left {
+                    padding-top: 0rem !important;
+                    padding-right: 0rem !important;
+                    padding-bottom: 0rem !important;
+                }
+
+                .margin-horizontal {
+                    margin-top: 0rem !important;
+                    margin-bottom: 0rem !important;
+                }
+
+                .padding-horizontal {
+                    padding-top: 0rem !important;
+                    padding-bottom: 0rem !important;
+                }
+
+                .margin-vertical {
+                    margin-right: 0rem !important;
+                    margin-left: 0rem !important;
+                }
+
+                .padding-vertical {
+                    padding-right: 0rem !important;
+                    padding-left: 0rem !important;
+                }
+
+                /* Width truncation */
+                .truncate-width {
+                    width: 100%;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                /* Scrollbar removal */
+                .no-scrollbar {
+                    -ms-overflow-style: none;
+                    overflow: -moz-scrollbars-none;
+                }
+
+                .no-scrollbar::-webkit-scrollbar {
+                    display: none;
+                }
+            </style>
+        </div>
+
+        <main class="main-wrapper">
+            <!-- Navigation -->
+            <div data-collapse="medium" data-animation="default" data-duration="400" data-w-id="d3674ecd-754d-640a-970b-9ae2ec27a084" data-easing="ease" data-easing2="ease" role="banner" class="navbar1_component w-nav">
+                <div class="navbar1_container">
+                    <a href="/" class="navbar1_logo-link w-nav-brand" aria-label="home">
+                        <img src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/672b5ab4d0c62e34c0ad09a0_Logo.svg" loading="lazy" alt="" class="image-2">
+                    </a>
+                    <nav role="navigation" class="navbar1_menu w-nav-menu">
+                        <div class="div-block-15">
+                            <a href="#" class="navbar1_link w-nav-link">Work</a>
+                            <a href="/about" class="navbar1_link w-nav-link">About</a>
+                        </div>
+                        <a href="https://calendly.com/nicobalbontin" class="button-2_small w-inline-block">
+                            <div data-w-id="ebad83a3-f7b1-37b5-fd3d-b2e3bd82916b" class="button-up-_small">
+                                <div class="button-text_small text-color-black">Schedule a call</div>
+                            </div>
+                            <div class="button-down_small">
+                                <div class="button-text no-opacity">Let's talk now!</div>
+                            </div>
+                        </a>
+                    </nav>
+                    <div class="navbar1_menu-button w-nav-button" aria-label="menu" role="button" tabindex="0" aria-controls="w-nav-overlay-0" aria-haspopup="menu" aria-expanded="false">
+                        <div class="menu-icon1">
+                            <div class="menu-icon1_line-top"></div>
+                            <div class="menu-icon1_line-middle">
+                                <div class="menu-icon_line-middle-inner"></div>
+                            </div>
+                            <div class="menu-icon1_line-bottom"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-nav-overlay" data-wf-ignore="" id="w-nav-overlay-0"></div>
+            </div>
+
+            <!-- Main Content -->
+            <section class="section_intro background-statie">
+                <div class="padding-global--9">
+                    <div class="container-large">
+                        <div class="padding-section-medium">
+                            <div class="w-layout-grid about1-growth_component">
+                                <div class="about1-growth_content">
+                                    <div class="margin-bottom padding-tittle">
+                                        <h2>Making recycling easier for users in a rush.</h2>
+                                    </div>
+                                    <div class="margin-bottom margin-medium">
+                                        <p class="text-size-medium">Working in collaboration with Statiegeld Nederland and Mr. Fill, we developed an app designed to help users recycle their cans and bottles more efficiently in Amsterdam.</p>
+                                    </div>
+                                    <div class="margin-bottom margin-medium">
+                                        <p class="text-size-medium">My goal was to establish a cohesive visual identity for Statieapp across all digital touchpoints while enhancing the overall user experience of the app itself.</p>
+                                    </div>
+                                </div>
+                                <div class="description-list1_component">
+                                    <div class="description-list1_content">
+                                        <div class="description-list1_list">
+                                            <div class="description-list1_item">
+                                                <div class="margin-bottom margin-xxsmall">
+                                                    <div class="text-weight-semibold">MY ROLE</div>
+                                                </div>
+                                                <div>UX/UI Design</div>
+                                                <div>Animations</div>
+                                                <div>Brand Identity</div>
+                                                <div>Website</div>
+                                            </div>
+                                        </div>
+                                        <div class="description-list1_list">
+                                            <div class="description-list1_item">
+                                                <div class="margin-bottom margin-xxsmall">
+                                                    <div class="text-weight-semibold">CLIENT</div>
+                                                </div>
+                                                <div class="max-width-large">
+                                                    <div>StatieApp</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hero Video Section -->
+            <section class="section-hero-video">
+                <div class="w-layout-blockcontainer container-2 w-container">
+                    <div data-poster-url="https://cdn.prod.website-files.com/67250045a34b9360992cb365%2F672a683cd52430d6380d7e10_STATIEAPP_HEROVID-poster-00001.jpg" data-video-urls="https://cdn.prod.website-files.com/67250045a34b9360992cb365%2F672a683cd52430d6380d7e10_STATIEAPP_HEROVID-transcode.mp4,https://cdn.prod.website-files.com/67250045a34b9360992cb365%2F672a683cd52430d6380d7e10_STATIEAPP_HEROVID-transcode.webm" data-autoplay="true" data-loop="true" data-wf-ignore="true" class="backgroundvid-statieapp w-background-video w-background-video-atom">
+                        <video id="ad30d49a-5030-0f08-e041-b8b7862b5050-video" autoplay="" loop="" style="background-image:url('https://cdn.prod.website-files.com/67250045a34b9360992cb365%2F672a683cd52430d6380d7e10_STATIEAPP_HEROVID-poster-00001.jpg')" muted="" playsinline="" data-wf-ignore="true" data-object-fit="cover">
+                            <source src="https://cdn.prod.website-files.com/67250045a34b9360992cb365%2F672a683cd52430d6380d7e10_STATIEAPP_HEROVID-transcode.mp4" data-wf-ignore="true">
+                            <source src="https://cdn.prod.website-files.com/67250045a34b9360992cb365%2F672a683cd52430d6380d7e10_STATIEAPP_HEROVID-transcode.webm" data-wf-ignore="true">
+                        </video>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Problem Section -->
+            <section class="section_about4-growth background-statie corner-40px">
+                <div class="padding-global--9">
+                    <div class="container-large">
+                        <div class="padding-section-text">
+                            <div class="margin-bottom margin-xxlarge">
+                                <div class="about4-growth_content-left">
+                                    <div class="padding-tittle">
+                                        <h3>The problem</h3>
+                                    </div>
+                                    <div class="margin-bottom margin-medium padding-tittle">
+                                        <div>
+                                            <p class="text-size-medium padding-bottom">Since Statigeld introduced its deposit return system, users have faced several unexpected challenges. These problems have created frustration and are limiting the system's overall effectiveness in promoting recycling.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-layout-grid grid2">
+                                    <div class="about4-growth_text-wrapper">
+                                        <img src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/6729026f18a5e74cebb0f566_emotion-unhappy-line.svg" loading="lazy" alt="" class="icon-height-medium opacity-icon">
+                                        <div>
+                                            <div class="margin-bottom margin-xxsmall">
+                                                <div class="heading-style-h5 opacity-60">Machine malfunctions and delays</div>
+                                            </div>
+                                            <div class="text-size-medium">Make the user flow very obvious and easy to understand. More cognitive thinking adds more friction. Give one M&M at a time: Users do not mind clicking, but thinking is a problem.</div>
+                                        </div>
+                                    </div>
+                                    <div class="about4-growth_text-wrapper">
+                                        <img src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/67261abebfc24b3f5b420606_hand-heart-line.svg" loading="lazy" alt="" class="icon-height-medium opacity-icon">
+                                        <div>
+                                            <div class="margin-bottom margin-xxsmall">
+                                                <div class="heading-style-h5 opacity-60">Unappealing reward system</div>
+                                            </div>
+                                            <div class="text-size-medium">Instead of showing all products, think of categories. In this case, it is First Hybrid or all Electric. Everything else comes below.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Full Photo Section -->
+            <section class="section-full-photo">
+                <div class="padding-global background-statie">
+                    <div class="container-large">
+                        <div class="about1-story_image-wrapper">
+                            <img src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/6729018ba471c6a5c995fe2c_Frame%2039762.jpg" loading="lazy" sizes="(max-width: 479px) 82vw, (max-width: 767px) 77vw, (max-width: 991px) 80vw, 82vw" srcset="https://cdn.prod.website-files.com/67250045a34b9360992cb365/6729018ba471c6a5c995fe2c_Frame%2039762-p-500.jpg 500w, https://cdn.prod.website-files.com/67250045a34b9360992cb365/6729018ba471c6a5c995fe2c_Frame%2039762-p-800.jpg 800w, https://cdn.prod.website-files.com/67250045a34b9360992cb365/6729018ba471c6a5c995fe2c_Frame%2039762-p-1080.jpg 1080w, https://cdn.prod.website-files.com/67250045a34b9360992cb365/6729018ba471c6a5c995fe2c_Frame%2039762.jpg 1088w" alt="" class="image corner-20">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Main Insights Section -->
+            <section class="section_about4-growth background-statie">
+                <div class="padding-global--9">
+                    <div class="container-large">
+                        <div class="padding-section-text">
+                            <div class="margin-bottom margin-xxlarge">
+                                <div class="about4-growth_content-left">
+                                    <div class="padding-tittle">
+                                        <h3>Main Insights</h3>
+                                    </div>
+                                    <div class="margin-bottom margin-medium">
+                                        <div>
+                                            <p class="text-size-medium padding-bottom">After conducting many interviews with users and stakeholders, we identified several key pain points that present valuable opportunities for improvement.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-layout-grid about3-growth_component">
+                                    <div class="about4-growth_text-wrapper">
+                                        <img src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/672902cfec09f3973375703e_layout-left-2-line.svg" loading="lazy" alt="" class="icon-height-medium opacity-icon">
+                                        <div>
+                                            <div class="margin-bottom margin-xxsmall">
+                                                <div class="heading-style-h5 opacity-60">Machine reliability and availability</div>
+                                            </div>
+                                            <div class="text-size-medium">A recurring issue in the user feedback is the unreliability and insufficient capacity of reverse vending machines, leading to frustration.</div>
+                                        </div>
+                                    </div>
+                                    <div class="about4-growth_text-wrapper">
+                                        <img src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/672902ce91ed29ffe4922e1c_seedling-line.svg" loading="lazy" alt="" class="icon-height-medium opacity-icon">
+                                        <div>
+                                            <div class="margin-bottom margin-xxsmall">
+                                                <div class="heading-style-h5 opacity-60">Environmental over Financial Motivation</div>
+                                            </div>
+                                            <div class="text-size-medium">Financial rewards don't appear to provide strong enough incentives to offset the inconvenient process many users experience. The primary motivator seems to be reducing environmental waste.</div>
+                                        </div>
+                                    </div>
+                                    <div class="about4-growth_text-wrapper">
+                                        <img src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/672902cf6551cea521223b0d_alarm-line.svg" loading="lazy" alt="" class="icon-height-medium opacity-icon">
+                                        <div>
+                                            <div class="margin-bottom margin-xxsmall">
+                                                <div class="heading-style-h5 opacity-60">Desire for efficient systems</div>
+                                            </div>
+                                            <div class="text-size-medium">There's demand for improving the entire process with modern features such as real-time machine availability, more RVMs around cities, and digital receipts.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery Section -->
+            <section class="section_gallery_full background-statie">
+                <div class="padding-global">
+                    <div class="container-large">
+                        <div class="gallery2_component padding-bottom">
+                            <div class="padding-section-small">
+                                <div class="gallery2_component">
+                                    <div class="w-layout-grid gallery2_grid-list">
+                                        <div class="w-layout-grid gallery2_row">
+                                            <a href="#" class="gallery2_lightbox-link w-inline-block w-lightbox" aria-label="open lightbox" aria-haspopup="dialog">
+                                                <div class="gallery2_image-wrapper">
+                                                    <img sizes="(max-width: 479px) 82vw, (max-width: 767px) 81vw, (max-width: 991px) 83vw, 82vw" srcset="https://cdn.prod.website-files.com/67250045a34b9360992cb365/67290210093b9b3c6959ee0e_dude_cleaning-p-500.jpg 500w, https://cdn.prod.website-files.com/67250045a34b9360992cb365/67290210093b9b3c6959ee0e_dude_cleaning.jpg 563w" alt="" src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/67290210093b9b3c6959ee0e_dude_cleaning.jpg" loading="lazy" class="gif-houseprocess corner-20">
+                                                </div>
+                                            </a>
+                                            <a href="#" class="gallery2_lightbox-link w-inline-block w-lightbox" aria-label="open lightbox" aria-haspopup="dialog">
+                                                <div class="gallery2_image-wrapper">
+                                                    <img sizes="(max-width: 479px) 82vw, (max-width: 767px) 81vw, (max-width: 991px) 83vw, 82vw" srcset="https://cdn.prod.website-files.com/67250045a34b9360992cb365/6729021ef1d1f97c864502fc_linewaiting-p-500.jpg 500w, https://cdn.prod.website-files.com/67250045a34b9360992cb365/6729021ef1d1f97c864502fc_linewaiting.jpg 563w" alt="" src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/6729021ef1d1f97c864502fc_linewaiting.jpg" loading="lazy" class="gif-houseprocess corner-20">
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Full Text Section -->
+            <div class="section-full-text background-statie-alt">
+                <div class="padding-global">
+                    <div class="full-screen-text">
+                        <div class="padding-section-xxlarge">
+                            <div class="text-align-center">
+                                <div class="margin-bottom margin-small">
+                                    <h2 class="blue"><span class="text-span-2 blue">How might</span> we streamline the recycling process to make it a quick, and rewarding experience for users?</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ideation Section -->
+            <section class="section_about4-growth background-statie-alt">
+                <div class="padding-global--9">
+                    <div class="container-large">
+                        <div class="padding-section-text">
+                            <div class="margin-bottom margin-xxlarge">
+                                <div class="w-layout-grid about4-growth_component">
+                                    <div class="about4-growth_content-left">
+                                        <h3>Ideation</h3>
+                                    </div>
+                                    <div class="about4-growth_content-right">
+                                        <div class="margin-bottom margin-medium">
+                                            <p class="text-size-medium">After conducting many exploratory interviews and doing usability tests with the current page, we concluded that designing distinct user flows for both pre- and post-purchase stages is essential. This underscored the importance of organizing and prioritizing information to create a successful, user-centered website.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery Section 2 -->
+            <section class="section_gallery_full background-statie-alt">
+                <div class="padding-global">
+                    <div class="container-large">
+                        <div class="gallery2_component">
+                            <div>
+                                <div class="gallery2_component padding-up-5rem">
+                                    <div class="w-layout-grid gallery2_grid-list">
+                                        <div class="w-layout-grid gallery2_row">
+                                            <a href="#" class="gallery2_lightbox-link w-inline-block w-lightbox" aria-label="open lightbox" aria-haspopup="dialog">
+                                                <div class="gallery2_image-wrapper">
+                                                    <img sizes="(max-width: 479px) 82vw, (max-width: 767px) 81vw, (max-width: 991px) 83vw, 82vw" srcset="https://cdn.prod.website-files.com/67250045a34b9360992cb365/67290365ddd321c5845ef607_statieapplogo-p-500.png 500w, https://cdn.prod.website-files.com/67250045a34b9360992cb365/67290365ddd321c5845ef607_statieapplogo.png 563w" alt="" src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/67290365ddd321c5845ef607_statieapplogo.png" loading="lazy" class="gif-houseprocess corner-20">
+                                                </div>
+                                            </a>
+                                            <a href="#" class="gallery2_lightbox-link w-inline-block w-lightbox" aria-label="open lightbox" aria-haspopup="dialog">
+                                                <div class="gallery2_image-wrapper">
+                                                    <img sizes="(max-width: 479px) 82vw, (max-width: 767px) 81vw, (max-width: 991px) 83vw, 82vw" srcset="https://cdn.prod.website-files.com/67250045a34b9360992cb365/6729031a7cad8079d1d6b4f6_statie_app_logo-p-500.png 500w, https://cdn.prod.website-files.com/67250045a34b9360992cb365/6729031a7cad8079d1d6b4f6_statie_app_logo.png 563w" alt="" src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/6729031a7cad8079d1d6b4f6_statie_app_logo.png" loading="lazy" class="gif-houseprocess corner-20">
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="about1-story_image-wrapper padding-up-2rem">
+                                <img src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/6729031ae2333effa57a8319_Colors.png" loading="lazy" sizes="(max-width: 479px) 82vw, (max-width: 767px) 77vw, (max-width: 991px) 80vw, 82vw" srcset="https://cdn.prod.website-files.com/67250045a34b9360992cb365/6729031ae2333effa57a8319_Colors-p-500.png 500w, https://cdn.prod.website-files.com/67250045a34b9360992cb365/6729031ae2333effa57a8319_Colors-p-800.png 800w, https://cdn.prod.website-files.com/67250045a34b9360992cb365/6729031ae2333effa57a8319_Colors-p-1080.png 1080w, https://cdn.prod.website-files.com/67250045a34b9360992cb365/6729031ae2333effa57a8319_Colors.png 1242w" alt="" class="image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery Section 3 -->
+            <section class="section_gallery12 background-statie">
+                <div class="padding-global">
+                    <div class="container-large">
+                        <div class="padding-section-large-2">
+                            <div class="gallery12_component">
+                                <div class="margin-bottom margin-xxlarge">
+                                    <div class="text-align-center">
+                                        <div class="max-width-large align-center"></div>
+                                    </div>
+                                </div>
+                                <div class="w-layout-grid gallery12_grid-list">
+                                    <div class="w-layout-grid gallery12_row">
+                                        <a href="#" class="gallery12_lightbox-link w-inline-block w-lightbox" aria-label="open lightbox" aria-haspopup="dialog">
+                                            <div class="gallery12_image-wrapper">
+                                                <img loading="lazy" src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/672e39835291b9cd24c18af7_Statieapp_mockup_export.gif" alt="" class="gallery12_image">
+                                            </div>
+                                        </a>
+                                        <a href="#" class="gallery12_lightbox-link w-inline-block w-lightbox" aria-label="open lightbox" aria-haspopup="dialog">
+                                            <div class="gallery12_image-wrapper">
+                                                <img loading="lazy" src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/672e39ac4e6f6aff1193394a_Statieapp_mockup_export_1.gif" alt="" class="gallery12_image">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="w-layout-grid gallery12_row">
+                                        <a href="#" class="gallery12_lightbox-link w-inline-block w-lightbox" aria-label="open lightbox" aria-haspopup="dialog">
+                                            <div class="gallery12_image-wrapper">
+                                                <img loading="lazy" src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/672e39e07ae862524b2bf033_Statieapp_mockup_export_2.gif" alt="" class="gallery12_image">
+                                            </div>
+                                        </a>
+                                        <a href="#" class="gallery12_lightbox-link w-inline-block w-lightbox" aria-label="open lightbox" aria-haspopup="dialog">
+                                            <div class="gallery12_image-wrapper">
+                                                <img loading="lazy" src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/672e3a9927a9ee35395e60fc_Statieapp_mockup_export_3.gif" alt="" class="gallery12_image">
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Website Section -->
+            <section class="section_about4-growth background-statie-alt2">
+                <div class="padding-global--9">
+                    <div class="container-large">
+                        <div class="padding-section-text">
+                            <div class="margin-bottom margin-xxlarge">
+                                <div class="w-layout-grid about4-growth_component">
+                                    <div class="about4-growth_content-left">
+                                        <h3>Website</h3>
+                                    </div>
+                                    <div class="about4-growth_content-right">
+                                        <div class="margin-bottom margin-medium">
+                                            <p class="text-size-medium">After completing the app, I was tasked with creating a website to encourage users to download and explore it. The primary goal was to showcase a premium product experience, capturing users' attention while providing a concise overview of the app's functionality and key benefits.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Full Photo Section 2 -->
+            <section class="section-full-photo background-statie-alt3">
+                <div class="padding-global">
+                    <div class="div-block-21">
+                        <div class="container-large padding-bottom-2rem">
+                            <div class="about1-story_image-wrapper">
+                                <img src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/6729031a6e29bc270a8da040_statieapp_website.png" loading="lazy" sizes="(max-width: 479px) 82vw, (max-width: 767px) 77vw, (max-width: 991px) 80vw, 82vw" srcset="https://cdn.prod.website-files.com/67250045a34b9360992cb365/6729031a6e29bc270a8da040_statieapp_website-p-500.png 500w, https://cdn.prod.website-files.com/67250045a34b9360992cb365/6729031a6e29bc270a8da040_statieapp_website-p-800.png 800w, https://cdn.prod.website-files.com/67250045a34b9360992cb365/6729031a6e29bc270a8da040_statieapp_website-p-1080.png 1080w, https://cdn.prod.website-files.com/67250045a34b9360992cb365/6729031a6e29bc270a8da040_statieapp_website.png 1242w" alt="" class="image">
+                            </div>
+                        </div>
+                        <div class="container-large">
+                            <div class="about1-story_image-wrapper">
+                                <img src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/6729031a317f88103c165d65_Frame%201597880507.png" loading="lazy" sizes="(max-width: 479px) 82vw, (max-width: 767px) 77vw, (max-width: 991px) 80vw, 82vw" srcset="https://cdn.prod.website-files.com/67250045a34b9360992cb365/6729031a317f88103c165d65_Frame%201597880507-p-500.png 500w, https://cdn.prod.website-files.com/67250045a34b9360992cb365/6729031a317f88103c165d65_Frame%201597880507-p-800.png 800w, https://cdn.prod.website-files.com/67250045a34b9360992cb365/6729031a317f88103c165d65_Frame%201597880507-p-1080.png 1080w, https://cdn.prod.website-files.com/67250045a34b9360992cb365/6729031a317f88103c165d65_Frame%201597880507.png 1244w" alt="" class="image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Next Project Section -->
+            <div class="next-proyect-3">
+                <div class="container-126">
+                    <a href="/neoke" class="frame-39872 w-inline-block">
+                        <div class="next-section">
+                            <div data-w-id="26c96faa-398c-6f03-b931-ef21cebc70e4" class="text-215">NEXT PROJECT</div>
+                            <img width="32" height="2" alt="" src="https://cdn.prod.website-files.com/6491a66556072f653d0181b0/655a285f7901275501720ee9_line-1.png" loading="lazy" data-w-id="26c96faa-398c-6f03-b931-ef21cebc70e6" class="line-4">
+                        </div>
+                        <div class="frame-39873">
+                            <img width="398.0000915527344" height="89.45564270019531" alt="" src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/672df83eec799e3a3c124ec1_Vectors-Wrapper.svg" loading="lazy" data-w-id="6d68e184-12c7-0782-6ef1-bc62611916f4" class="vectors-wrapper-28">
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Ready to Work Section -->
+            <div class="section-ready-tor-wrok">
+                <div class="padding-global">
+                    <div class="container-small">
+                        <div class="padding-section-xlarge">
+                            <div class="text-align-center">
+                                <div class="cta_ready-to-work">
+                                    <div class="cta-tittle">
+                                        <h2 class="heading-3">Ready to rock?</h2>
+                                        <p class="text-size-medium text-color-white">I'm here to help. Let's explore how we can work together</p>
+                                    </div>
+                                    <div class="margin-top margin-medium">
+                                        <div class="button-group is-center">
+                                            <a href="https://calendly.com/nicobalbontin" class="button-2 w-inline-block">
+                                                <div class="button-up background-color-white border-black">
+                                                    <div class="button-text text-color-black">Schedule a call</div>
+                                                </div>
+                                                <div class="button-down">
+                                                    <div class="button-text no-opacity">Let's talk now!</div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer7_component-_black">
+            <div class="padding-global">
+                <div class="container-large">
+                    <div class="padding-vertical padding-xxlarge">
+                        <div class="padding-bottom padding-xxlarge">
+                            <div class="footer7_top-wrapper-2 text-color-white">
+                                <a href="#" class="footer7_logo-link w-nav-brand">
+                                    <img loading="lazy" src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/672b9a35a366c720aa8b91fb_Frame%201597880529.svg" alt="" class="footer7_logo">
+                                </a>
+                                <div class="w-layout-grid footer7_link-list">
+                                    <a href="/" class="footer7_link-2 text-color-white">Work</a>
+                                    <a href="/about" class="footer7_link-2 text-color-white">About</a>
+                                    <a href="#" class="footer7_link-2 text-color-white">Contact</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line-divider-3"></div>
+                        <div class="padding-top padding-medium">
+                            <div class="footer7_bottom-wrapper">
+                                <div class="div-block-14">
+                                    <div class="footer7_credit-text text-color-white">Made with</div>
+                                    <img src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/672b9ad38f179b663839e5e3_heart-fill.svg" loading="lazy" alt="" class="image-small-logo">
+                                    <div class="footer7_credit-text text-color-white">from amsterdam</div>
+                                </div>
+                                <div class="w-layout-grid footer7_legal-list">
+                                    <div class="linkedin-footer">
+                                        <a href="#" class="footer7_legal-link text-color-white">LinkedIn</a>
+                                        <img src="https://cdn.prod.website-files.com/67250045a34b9360992cb365/672b9c480443e8ba94a430f4_linkedin-box-fill.svg" loading="lazy" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=67250045a34b9360992cb365" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="webflow.schunk.220a469280b603f6.js"></script>
+    <script src="jquery-3.5.1.min.dc5e7f18c8.js"></script>
+    <script src="webflow.schunk.4a394eb5af8156f2.js"></script>
+    <script src="webfont.js"></script>
+    <script src="js_statie/webflow.schunk.ed0c20e773e9419c.js"></script>
+    <script src="webflow.2122697c.08b952491de1becb.js"></script>
+    <script src="nav.js" type="text/javascript"></script>
+</body>
+</html> 

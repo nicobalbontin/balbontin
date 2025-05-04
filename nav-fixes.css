@@ -1,0 +1,123 @@
+.div-block-15 {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.div-block-15 a[href="#workdisplay"] {
+  width: 73px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.div-block-15 a[href="/about"] {
+  width: 81px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Footer link fixes */
+.footer7_link-list a[href="#"] {
+  width: 73px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.footer7_link-list a[href="#"]:nth-child(2) {
+  width: 81px;
+}
+
+.footer7_link-list a[href="#"]:nth-child(3) {
+  width: 95px;
+}
+
+.footer7_link-list a[href="#"]:hover {
+  color: #000;
+  background-color: #fff;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+/* Hamburger menu styles */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  padding: 0;
+  background: none;
+  border: none;
+  z-index: 1000;
+}
+
+.hamburger-line {
+  width: 24px;
+  height: 2px;
+  background-color: #000;
+  margin: 3px 0;
+  transition: all 0.3s ease;
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(1) {
+  transform: translateY(8px) rotate(-45deg);
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(3) {
+  transform: translateY(-8px) rotate(45deg);
+}
+
+@media screen and (max-width: 991px) {
+  .hamburger-menu {
+    display: flex;
+  }
+
+  .navbar1_menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+    flex-direction: column;
+    padding: 88px 5% 2rem;
+    transition: right 0.3s ease;
+    z-index: 999;
+  }
+
+  .navbar1_menu.active {
+    right: 0;
+  }
+
+  .div-block-15 {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .div-block-15 a {
+    width: 100% !important;
+    padding: 1rem;
+  }
+
+  .button-2_small {
+    width: 100%;
+    margin-top: 1rem;
+  }
+} 
