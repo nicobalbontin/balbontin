@@ -1,0 +1,117 @@
+/**
+ * Design system tokens — single source of truth.
+ * Values reconciled from legacy/style.css (Webflow export).
+ * Imported by app/globals.css → mapped into Tailwind @theme.
+ */
+
+:root {
+  /* ─── Colors ─── */
+  --ds-color-background: #fafafa;
+  --ds-color-background-alt: #121212;
+  --ds-color-foreground: #121212;
+  --ds-color-text-secondary: #666;
+  --ds-color-text-muted: #4e4e4e;
+  --ds-color-text-on-dark: #f1f1f1;
+  --ds-color-border: #121212;
+  --ds-color-focus-ring: #4d65ff;
+  --ds-color-white: #fafafa;
+  --ds-color-black: #121212;
+
+  /* Brand gradient */
+  --ds-color-brand-purple: #b16cea;
+  --ds-color-brand-coral: #ff5e69;
+  --ds-color-brand-orange: #ff8a56;
+  --ds-color-brand-yellow: #ffa84b;
+  --ds-gradient-brand: linear-gradient(
+    108deg,
+    #b16cea 8%,
+    #ff5e69 40%,
+    #ff8a56 77%,
+    #ffa84b 91%
+  );
+
+  /* Neutrals */
+  --ds-color-neutral-lightest: #eee;
+  --ds-color-neutral-lighter: #ccc;
+  --ds-color-neutral-light: #aaa;
+  --ds-color-neutral: #666;
+  --ds-color-neutral-dark: #444;
+  --ds-color-neutral-darker: #222;
+  --ds-color-neutral-darkest: #111;
+
+  /* ─── Surfaces ───
+     Measured from the legacy pages; each case study carries its own palette. */
+  --ds-surface-white: #ffffff;
+  --ds-surface-offwhite: #fafafa;
+  --ds-surface-cream: #f8f5f0;
+  --ds-surface-cream-warm: #f1edeb;
+  --ds-surface-ht: #f3f3f3;
+  --ds-surface-statie: #fbfbfb;
+  --ds-surface-statie-alt: #eeeeee;
+  --ds-surface-statie-blue: #f3f5fa;
+  --ds-surface-ink: #121212;
+  --ds-surface-ink-soft: #222222;
+  --ds-surface-black: #000000;
+  --ds-surface-indigo: #0a1550;
+  --ds-surface-indigo-dark: #1c1b2e;
+  --ds-surface-violet: #5b40a1;
+
+  /* ─── Typography ─── */
+  --ds-font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+
+  /* Scale mirrors the legacy raw tag sizes actually rendered on the site */
+  --ds-text-display: 4.688rem;
+  --ds-text-h1: 3.375rem;
+  --ds-text-h2: 3rem;
+  --ds-text-h3: 2.5rem;
+  --ds-text-h4: 1.75rem;
+  --ds-text-h5: 1.5rem;
+  --ds-text-h6: 1.25rem;
+  --ds-text-lead: 1.25rem;
+  --ds-text-body: 1.125rem;
+  --ds-text-body-emphasis: 1.25rem;
+  --ds-text-base: 1rem;
+  --ds-text-small: 0.875rem;
+  --ds-text-tiny: 0.75rem;
+
+  --ds-leading-display: 1.1;
+  --ds-leading-heading: 1.2;
+  --ds-leading-body: 1.5;
+  --ds-tracking-display: -0.125rem;
+
+  /* ─── Spacing ─── */
+  --ds-spacing-section-sm: 2rem;
+  --ds-spacing-section-md: 5rem;
+  --ds-spacing-section-lg: 5rem;
+  --ds-spacing-section-xl: 7rem;
+  --ds-spacing-section-xxl: 10rem;
+  /* Legacy: .main-wrapper max 1440px, then 9% inset → 1180.8px content */
+  --ds-padding-global: 9%;
+
+  /* ─── Containers ─── */
+  --ds-container-page: 1440px;
+  --ds-container-lg: 80rem;
+  --ds-container-md: 64rem;
+  --ds-container-sm: 48rem;
+
+  /* ─── Buttons ─── */
+  --ds-button-radius: 10px;
+  --ds-button-pad-y: 20px;
+  --ds-button-pad-x: 30px;
+  --ds-button-font-size: 18px;
+  --ds-button-font-weight: 500;
+  --ds-button-shadow-offset: 7px;
+  --ds-button-nav-pad-y: 10px;
+  --ds-button-nav-pad-x: 20px;
+  --ds-button-nav-border: 3px;
+  --ds-button-nav-shadow-offset: 6px;
+
+  /* ─── Logo ─── */
+  --ds-logo-max-height: 30px;
+
+  /* ─── Breakpoints ─── */
+  --ds-bp-mobile: 479px;
+  --ds-bp-mobile-landscape: 767px;
+  --ds-bp-tablet: 991px;
+  --ds-bp-desktop: 1280px;
+}

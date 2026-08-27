@@ -1,0 +1,13 @@
+@keyframes loop-vertically {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-loop-vertically {
+  animation: loop-vertically 108s linear infinite;
+  will-change: transform;
+} 

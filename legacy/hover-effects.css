@@ -1,0 +1,12 @@
+.gallery2_image-wrapper-2 {
+  overflow: hidden !important;
+  border-radius: 22px !important;
+}
+
+.gallery2_image-2 {
+  transition: transform 0.3s ease !important;
+}
+
+.gallery2_image-2:hover {
+  transform: scale(1.05) !important;
+} 
