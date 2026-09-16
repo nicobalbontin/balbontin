@@ -59,14 +59,14 @@ const shadowVariants = cva(
   }
 );
 
-const labelVariants = cva("whitespace-nowrap leading-none", {
+const labelVariants = cva("whitespace-nowrap", {
   variants: {
     variant: {
       primary:
-        "text-[length:var(--ds-button-font-size)] font-[number:var(--ds-button-font-weight)] text-background",
+        "text-[length:var(--ds-button-font-size)]/none font-[number:var(--ds-button-font-weight)] text-background",
       secondary:
-        "text-[length:var(--ds-button-font-size)] font-[number:var(--ds-button-font-weight)] text-foreground",
-      nav: "text-base font-medium text-foreground",
+        "text-[length:var(--ds-button-font-size)]/none font-[number:var(--ds-button-font-weight)] text-foreground",
+      nav: "text-base/none font-medium text-foreground",
     },
   },
   defaultVariants: {

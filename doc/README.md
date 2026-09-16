@@ -26,14 +26,16 @@ npm run build  # production build (all routes static)
 To preview the **old static site** (reference only):
 
 ```bash
-python3 -m http.server 8000
-# → http://localhost:8000 serves index.html from repo root (NOT Next.js)
+cd legacy && python3 -m http.server 8000
+# → http://localhost:8000 serves legacy/index.html (NOT Next.js)
 ```
 
 ## Important paths
 
 - **New app:** `app/`, `components/`, `lib/`, `design-system/`, `public/assets/`
-- **Legacy reference:** `legacy/` (copy of HTML/CSS used during migration; root still has originals too)
+- **Legacy reference:** `legacy/` — self-contained archive of the original Webflow
+  export (HTML/CSS/JS/assets). The repo root no longer has duplicate copies; see
+  [`legacy/README.md`](../legacy/README.md).
 - **Project data (single source):** `lib/projects.ts`
 - **Tokens:** `design-system/tokens.css` → imported by `app/globals.css` (`@theme` + `type-*` utilities)
 - **Component showcase:** `/design-system` (noindex) — colors, type, buttons, spacing

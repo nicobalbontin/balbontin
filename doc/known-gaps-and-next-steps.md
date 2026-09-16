@@ -1,6 +1,6 @@
 # Known gaps and next steps
 
-Use this when continuing work — especially **visual parity** with the legacy site at `localhost:8000`.
+Use this when continuing work — especially **visual parity** with the legacy site at `localhost:8000` (served from `legacy/`).
 
 ---
 
@@ -21,11 +21,11 @@ Critical UI has been aligned to legacy Webflow via a consolidated design system 
 **Reference for remaining QA:**
 
 ```bash
-python3 -m http.server 8000   # legacy
-npm run dev                   # Next.js on :3000
+cd legacy && python3 -m http.server 8000   # legacy (self-contained)
+npm run dev                                # Next.js on :3000
 ```
 
-Still not pixel-identical everywhere (galleries, IX2 motion, next-project promos). Legacy HTML/CSS remains in `legacy/` and repo root.
+Still not pixel-identical everywhere (galleries, IX2 motion, next-project promos). Legacy HTML/CSS/JS/assets live entirely in `legacy/` (repo root duplicates were removed — see Phase 6.5 in `migration-before-after.md`).
 
 ---
 
@@ -33,7 +33,7 @@ Still not pixel-identical everywhere (galleries, IX2 motion, next-project promos
 
 | Issue | Status / fix |
 |---|---|
-| Local images 404 on first load | Fixed by copying `assets/` → `public/assets/` |
+| Local images 404 on first load | Fixed by copying `assets/` → `public/assets/` (original now archived at `legacy/assets/`) |
 | Many case study images on CDN | Still use `cdn.prod.website-files.com` — works via `next.config.ts` |
 | Download all CDN assets locally | **Not done** — plan mentioned `public/assets/projects/` |
 
@@ -72,7 +72,7 @@ Tokens were **hand-built** from `style.css` `:root`. If the live site is reachab
 3. **Add redirects** in `next.config.ts` for old `.html` URLs
 4. **Next project sections** — restore legacy promo visuals (Statie/Neoke/Here & Now SVG blocks)
 5. **991px exact breakpoint** — Tailwind `lg` is 1024px; add custom `@custom-variant` if needed
-6. **Remove duplicate legacy files from repo root** — keep only `legacy/` once confident
+6. ~~**Remove duplicate legacy files from repo root**~~ — done (Phase 6.5); `legacy/` is now the single, self-contained archive
 
 ---
 
@@ -93,7 +93,7 @@ Read doc/README.md and doc/migration-before-after.md first.
 
 Stack: App Router, Tailwind v4, TypeScript, shared components in components/, project data in lib/projects.ts.
 
-Legacy reference: legacy/ folder and python -m http.server 8000 on repo root.
+Legacy reference: legacy/ folder (self-contained) — run `python3 -m http.server 8000` from inside legacy/.
 New app: npm run dev → localhost:3000.
 
 Goal: maintain single design system (design-system/tokens.css, app/globals.css). Improve visual parity with legacy where requested.

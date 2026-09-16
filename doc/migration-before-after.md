@@ -37,11 +37,15 @@ Personal portfolio for **Nico Balbontin** (designer, Amsterdam). Original site w
 
 ### How to view the old site locally
 
-If someone runs `python3 -m http.server 8000` from the **repo root**, port **8000** serves the **original static HTML** (`index.html`, etc.). This is **not** a previous Next.js build — it is the legacy Webflow export.
+The repo root has since been cleaned up (see Phase 6.5 below) — the legacy static
+site now lives entirely inside `legacy/` as a self-contained snapshot. Run
+`python3 -m http.server 8000` from **inside `legacy/`** (not the repo root) to serve
+the **original static HTML** (`index.html`, etc.). This is **not** a previous
+Next.js build — it is the legacy Webflow export.
 
 Compare:
 
-- `http://localhost:8000` → legacy static (Python static server)
+- `http://localhost:8000` (served from `legacy/`) → legacy static (Python static server)
 - `http://localhost:3000` → new Next.js app (`npm run dev`)
 
 ---
@@ -141,13 +145,39 @@ All 6 pages rebuilt as composable React sections (content from legacy HTML, not 
 - `README.md` updated for dev workflow
 - Web Interface Guidelines pass: skip link, aria labels, transform-based menu animation, etc.
 
+### Phase 6.5 — Root de-duplication (post-migration cleanup)
+
+After the migration, the repo root still had the **original Webflow export files**
+duplicated alongside the new Next.js app (root `index.html`/`about.html`/etc., root
+`*.css`, `nav.js`, the `js_about/`, `js_ht/`, `js_neoke/`, `js_here-now/`, `Js_statie/`,
+`js/` runtime bundles, and a root `assets/` folder). None of these were referenced by
+any Next.js code — confirmed by diffing the root `assets/` folder against
+`public/assets/` (identical) and grepping `app/`, `components/`, `lib/`,
+`design-system/` for any relative or root-level path to them.
+
+Since `legacy/` already held identical copies of the HTML/CSS (per Phase 6), and the
+`js_*`/`assets/` runtime files were only ever needed to make those HTML files loadable
+in a browser, everything was consolidated:
+
+- Root `*.html`, root `*.css`, and root `nav.js` were **deleted** (exact duplicates
+  already in `legacy/`)
+- Root `assets/`, `js/`, `js_about/`, `js_ht/`, `js_neoke/`, `js_here-now/`,
+  `Js_statie/` were **moved into `legacy/`**, so the archived site is now fully
+  self-contained and still previewable (see updated instructions above)
+- Removed stray leftovers: empty `.extract-design-system/` dir, `.DS_Store` files
+- Added `legacy/README.md` documenting the archive
+
+Result: the repo root now contains only the active Next.js app; there is a single,
+self-contained `legacy/` folder for historical reference. See
+[`legacy/README.md`](../legacy/README.md).
+
 ---
 
 ## Assets
 
 | Location | Purpose |
 |---|---|
-| `assets/` (repo root) | Original asset folder from static site |
+| `legacy/assets/` | Original asset folder from static site (moved here from repo root during Phase 6.5 cleanup — needed only to keep `legacy/*.html` previewable) |
 | `public/assets/` | **Served by Next.js** — images + videos copied here (`/assets/images/...` in code) |
 
 Many case study images still load from **Webflow CDN** (`cdn.prod.website-files.com`) — configured in `next.config.ts` `images.remotePatterns`.
@@ -184,4 +214,4 @@ Many case study images still load from **Webflow CDN** (`cdn.prod.website-files.
 2. `lib/projects.ts` — project metadata and chain
 3. `components/layout/Navbar.tsx`, `Footer.tsx`
 4. `app/page.tsx` — home
-5. `legacy/index.html` — visual/content reference for parity work
+5. `legacy/index.html` — visual/content reference for parity work (self-contained; see [`legacy/README.md`](../legacy/README.md))
